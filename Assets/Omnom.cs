@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Omnom : MonoBehaviour {
 
-	private Vector3 speed;
+	[SerializeField]
+	private Text caption;
+
+	private int score;
 
 	// Use this for initialization
 	void Start () {
+		Events.eventBus ().Subscribe<AppleEaten> ((m) => {
+			caption.text = (++score).ToString();
+		});
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			var target = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			speed = (target - transform.position).normalized * 2.9f;
-			GetComponent<Rigidbody2D> ().velocity = speed;
+			Vector2 speed = target - transform.position;
+			GetComponent<Rigidbody2D> ().velocity = speed.normalized * 4.0f;
 		}
 	}
 }

@@ -3,10 +3,14 @@ using System.Collections;
 
 public class AppleManager : MonoBehaviour {
 
+	[SerializeField]
+	private GameObject applePrefab;
+
 	// Use this for initialization
 	void Start () {
 		Events.eventBus ().Subscribe<AppleEaten> ((m) => {
-			Debug.Log("event received!");
+			var apple = Instantiate(applePrefab) as GameObject;
+			apple.transform.position = Random.insideUnitCircle * 5.0f;
 		});
 	}
 	
