@@ -34,3 +34,12 @@ public class TimeExpired : ITinyMessage
 		}
 	}
 }
+
+public class GameStarted : ITinyMessage
+{
+	public object Sender {
+		get {
+			return null;
+		}
+	}
+}

@@ -4,11 +4,15 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
-	private float timeLeft = 5.0f;
+	[SerializeField]
+	private float gameDuration;
+	private float timeLeft;
 
 	// Use this for initialization
 	void Start () {
-	
+		Events.eventBus ().Subscribe<GameStarted> ((m) => {
+			timeLeft = gameDuration;
+		});
 	}
 	
 	// Update is called once per frame

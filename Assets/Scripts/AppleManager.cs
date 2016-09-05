@@ -10,13 +10,15 @@ public class AppleManager : MonoBehaviour {
 	private HashSet<GameObject> apples = new HashSet<GameObject>();
 
 	// Use this for initialization
-	void Start () {
-		for (int i = 0; i < 5; i++) {
-			var apple = Instantiate (applePrefab) as GameObject;
-			apple.transform.position = Random.insideUnitCircle * 7.0f;
-			apples.Add (apple);
-		}
-
+	void Start ()
+	{
+		Events.eventBus ().Subscribe<GameStarted> ((m) => {
+			for (int i = 0; i < 5; i++) {
+				var apple = Instantiate (applePrefab) as GameObject;
+				apple.transform.position = Random.insideUnitCircle * 7.0f;
+				apples.Add (apple);
+			}
+		});
 
 		Events.eventBus ().Subscribe<AppleEaten> ((m) => {
 			var apple = m.apple;
