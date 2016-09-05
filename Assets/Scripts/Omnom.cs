@@ -7,6 +7,9 @@ public class Omnom : MonoBehaviour {
 	[SerializeField]
 	private Text caption;
 
+	[SerializeField]
+	private float touchPower;
+
 	private int score;
 
 	enum State {
@@ -23,6 +26,11 @@ public class Omnom : MonoBehaviour {
 			score = 0;
 			caption.text = "";
 			state = State.ACTIVE;
+			transform.position = new Vector2(0,0);
+//			transform.localRotation = Quaternion.identity;
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			GetComponent<Rigidbody2D>().angularVelocity = 0;
+			GetComponent<Rigidbody2D>().rotation = 0;
 		});
 		
 		Events.eventBus ().Subscribe<AppleEaten> ((m) => {
@@ -40,7 +48,8 @@ public class Omnom : MonoBehaviour {
 		if (state == State.ACTIVE && Input.GetMouseButtonDown (0)) {
 			var target = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Vector2 speed = target - transform.position;
-			GetComponent<Rigidbody2D> ().velocity = speed.normalized * 4.0f;
+//			GetComponent<Rigidbody2D> ().velocity = speed.normalized * 8.0f;
+			GetComponent<Rigidbody2D> ().AddForce (speed.normalized * touchPower);
 		}
 	}
 }

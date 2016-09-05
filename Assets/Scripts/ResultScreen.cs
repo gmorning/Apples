@@ -13,6 +13,11 @@ public class ResultScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		int maxScore = PlayerPrefs.GetInt("max_score");
+		scoreLabel.text = "Score: " + score.ToString();
+		maxScoreLabel.text = "Max: " + maxScore.ToString();
+		
+		
 		Events.eventBus ().Subscribe<GameStarted> ((m) => {
 			transform.localScale = new Vector3 (0, 0, 0);
 			score = 0;
@@ -21,7 +26,7 @@ public class ResultScreen : MonoBehaviour {
 		Events.eventBus ().Subscribe<TimeExpired> ((m) => {
 			transform.localScale = new Vector3(1,1,1);
 
-			int maxScore = PlayerPrefs.GetInt("max_score");
+			maxScore = PlayerPrefs.GetInt("max_score");
 			maxScore = Mathf.Max(maxScore, score);
 			PlayerPrefs.SetInt("max_score", maxScore);
 
