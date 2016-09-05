@@ -5,8 +5,7 @@ using TinyMessenger;
 public class AppleEater : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		DestroyObject (coll.gameObject);
-		Events.eventBus ().Publish (new AppleEaten ());
+		Events.eventBus ().Publish (new AppleEaten (coll.gameObject));
 	}
 
 	// Use this for initialization

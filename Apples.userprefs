@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Omnom.cs">
+    <Files>
+      <File FileName="Assets/Omnom.cs" Line="22" Column="46" />
+      <File FileName="Assets/AppleEater.cs" Line="8" Column="65" />
+      <File FileName="Assets/Scripts/Events.cs" Line="18" Column="9" />
+      <File FileName="Assets/AppleManager.cs" Line="28" Column="20" />
+      <File FileName="Assets/Timer.cs" Line="7" Column="28" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

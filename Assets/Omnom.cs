@@ -9,10 +9,17 @@ public class Omnom : MonoBehaviour {
 
 	private int score;
 
+
 	// Use this for initialization
 	void Start () {
 		Events.eventBus ().Subscribe<AppleEaten> ((m) => {
 			caption.text = (++score).ToString();
+		});
+
+		Events.eventBus ().Subscribe<TimeExpired> ((m) => {
+			int maxScore = PlayerPrefs.GetInt("max_score");
+			maxScore = Mathf.Max(maxScore, score);
+			PlayerPrefs.SetInt("max_score", maxScore);
 		});
 	}
 	
